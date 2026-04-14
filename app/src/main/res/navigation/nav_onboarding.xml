@@ -10,12 +10,22 @@
         android:name="com.example.perfz.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
+
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment"
             app:popUpTo="@id/loginFragment" />
 
+        <action
+            android:id="@+id/action_loginFragment_to_recpasswordFragment"
+            app:destination="@id/recpasswordFragment" />
+
+        <action
+            android:id="@+id/action_loginFragment_to_peregisterFragment"
+            app:destination="@id/peregisterFragment" />
+
     </fragment>
+
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.perfz.RegisterFragment"
@@ -23,4 +33,52 @@
         tools:layout="@layout/fragment_register" >
 
     </fragment>
+
+    <fragment
+        android:id="@+id/recpasswordFragment"
+        android:name="com.example.perfz.RecoverPassword"
+        android:label="fragment_recpassword"
+        tools:layout="@layout/fragment_recpassword" >
+
+        <action
+            android:id="@+id/action_recpasswordFragment_to_veremail1Fragment"
+            app:destination="@id/veremail1Fragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/veremail1Fragment"
+        android:name="com.example.perfz.VerifyEmail"
+        android:label="fragment_veremail1"
+        tools:layout="@layout/fragment_veremail1" >
+
+        <action
+            android:id="@+id/action_veremail1Fragment_to_newpasswordFragment"
+            app:destination="@id/newpasswordFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/newpasswordFragment"
+        android:name="com.example.perfz.NewPassword"
+        android:label="fragment_newpassword"
+        tools:layout="@layout/fragment_newpassword" >
+
+        <action
+            android:id="@+id/action_newpassword_to_login"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/peregisterFragment"
+        android:name="com.example.perfz.PersonalInformation"
+        android:label="fragment_peregister"
+        tools:layout="@layout/fragment_peregister" >
+
+    </fragment>
+
 </navigation>

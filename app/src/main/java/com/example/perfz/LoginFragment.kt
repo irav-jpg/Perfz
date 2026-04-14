@@ -8,11 +8,14 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.perfz.databinding.FragmentLoginBinding
 import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.viewModels
 
 class LoginFragment : Fragment() {
 
     private var _binding : FragmentLoginBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel by viewModels<SigninViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +37,14 @@ class LoginFragment : Fragment() {
         binding.loginButton.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
+
+        binding.tvRegistrarse.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_peregisterFragment)
+        }
+
+        binding.tvReset.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_recpasswordFragment)
+        }
     }
 
     private fun setupValidation(){
@@ -54,9 +65,8 @@ class LoginFragment : Fragment() {
         val isEmailValid = isValidEmail(email)
         val isPasswordValid = password.length >= 8
 
-        // Mostrar error solo si hay texto Y el formato es incorrecto
         binding.emailInputLayout.error = when {
-            email.isEmpty() -> null // No mostramos error si está vacío (opcional)
+            email.isEmpty() -> null
             !isEmailValid -> "Correo inválido"
             else -> null
         }
