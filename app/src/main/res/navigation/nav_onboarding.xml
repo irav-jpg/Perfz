@@ -28,7 +28,7 @@
 
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.example.perfz.RegisterFragment"
+        android:name="com.example.perfz.signup.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
 

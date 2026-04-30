@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.perfz.databinding.FragmentLoginBinding
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
+import com.example.perfz.core.FragmentCommunicator
 
 class LoginFragment : Fragment() {
 
@@ -16,6 +17,8 @@ class LoginFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel by viewModels<SigninViewModel>()
+
+    private lateinit var communicator: FragmentCommunicator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +29,9 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
+        communicator = requireActivity() as FragmentCommunicator
+        setupValidation()
+        communicator.manageLoader(isVisible = true)
         return binding.root
     }
 
