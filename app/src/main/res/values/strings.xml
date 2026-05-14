@@ -1,5 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">Perfz</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string-array name="transaction_categories">
+        <item>Comida</item>
+        <item>Transporte</item>
+        <item>Vivienda</item>
+        <item>Entretenimiento</item>
+        <item>Otros</item>
+    </string-array>
 </resources>

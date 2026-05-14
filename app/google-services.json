@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "310087650417",
+    "project_id": "perfz-395ae",
+    "storage_bucket": "perfz-395ae.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:310087650417:android:c254e0a7e7e1ec5dcc5fd0",
+        "android_client_info": {
+          "package_name": "com.example.perfz"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC72W4EXLCB1sg71GoppWB6rPRJFnDwvmE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

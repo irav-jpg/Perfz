@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:background="#FFFFFF"
-   >
+    android:background="#FFFFFF">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -31,6 +30,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
+        <!-- Botón Atrás -->
         <ImageView
             android:id="@+id/btnBack"
             android:layout_width="24dp"
@@ -41,6 +41,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <!-- Icono de Usuario -->
         <ImageView
             android:id="@+id/logoBox"
             android:layout_width="32dp"
@@ -76,8 +77,9 @@
             app:layout_constraintBottom_toTopOf="@id/guidelineHeader"
             app:layout_constraintStart_toStartOf="@+id/tvBienvenido" />
 
+        <!-- Campo Nombre (nombreTil + etNombre) -->
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilNombre"
+            android:id="@+id/nombreTil"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -88,97 +90,86 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etNombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Campo Apellidos (apellidosTil + etApellidos) -->
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilApellidos"
+            android:id="@+id/apellidosTil"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
             android:hint="Apellidos:"
-            app:layout_constraintTop_toBottomOf="@id/tilNombre"
+            app:layout_constraintTop_toBottomOf="@id/nombreTil"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etApellidos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Campo Teléfono (etCelular) -->
+        <!-- NOTA: Tu Kotlin no usa celularTil para errores, pero usa etCelular para el texto -->
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilUsuario"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
-            android:hint="Nombre de usuario:"
-            app:layout_constraintTop_toBottomOf="@id/tilApellidos"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilTelefono"
+            android:id="@+id/celularTil"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
             android:hint="Teléfono:"
-            app:layout_constraintTop_toBottomOf="@id/tilUsuario"
+            app:layout_constraintTop_toBottomOf="@id/apellidosTil"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCelular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="phone" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Campo Fecha Nacimiento (fechaNacimientoTil + etFechaNacimiento) -->
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilFechaNac"
+            android:id="@+id/fechaNacimientoTil"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
             android:hint="Fecha de nacimiento:"
-            app:layout_constraintTop_toBottomOf="@id/tilTelefono"
+            app:layout_constraintTop_toBottomOf="@id/celularTil"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etFechaNacimiento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:focusable="false"
                 android:clickable="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Botón Continuar (btnContinuar) -->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnContinuarInfo"
+            android:id="@+id/btnContinuar"
             android:layout_width="0dp"
-            android:layout_height="32dp"
+            android:layout_height="48dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
             android:text="Continuar"
             android:textAllCaps="false"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:textStyle="bold"
             android:backgroundTint="#36BBA7"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:padding="0dp"
             app:cornerRadius="16dp"
-            app:layout_constraintTop_toBottomOf="@id/tilFechaNac"
+            app:layout_constraintTop_toBottomOf="@id/fechaNacimientoTil"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
