@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_bottom_sheet"
+    android:padding="24dp">
+
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:background="#E0E0E0"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="24dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Detalle de Transacción"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="#9E9E9E"
+        android:letterSpacing="0.05"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/tvDetailCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Categoría"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#1A1A1A"
+        android:layout_marginBottom="4dp"/>
+
+    <TextView
+        android:id="@+id/tvDetailDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="08 de junio 2026"
+        android:textSize="14sp"
+        android:textColor="#757575"
+        android:layout_marginBottom="24dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Monto"
+        android:textSize="12sp"
+        android:textColor="#9E9E9E" />
+
+    <TextView
+        android:id="@+id/tvDetailAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="$0.00"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textColor="#1A1A1A"
+        android:layout_marginBottom="24dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Descripción"
+        android:textSize="12sp"
+        android:textColor="#9E9E9E" />
+
+    <TextView
+        android:id="@+id/tvDetailDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sin descripción"
+        android:textSize="16sp"
+        android:textColor="#1A1A1A"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="32dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCloseDetail"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:text="Entendido"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="16dp"
+        app:backgroundTint="#36BBA7"/>
+
+</LinearLayout>

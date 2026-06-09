@@ -5,13 +5,11 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/homeFragment">
 
-
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.perfz.home.HomeFragment"
         android:label="Inicio"
         tools:layout="@layout/fragment_home">
-
 
         <action
             android:id="@+id/action_homeFragment_to_addTransactionFragment"
@@ -20,13 +18,43 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
-    </fragment>
 
+        <action
+            android:id="@+id/action_homeFragment_to_marketFragment"
+            app:destination="@id/marketFragment" />
+
+        <action
+            android:id="@+id/action_homeFragment_to_wishlistFragment"
+            app:destination="@id/wishlistFragment" />
+
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/addTransactionFragment"
         android:name="com.example.perfz.AddTransactionFragment"
         android:label="Nueva Transacción"
         tools:layout="@layout/fragment_add_transaction" />
+
+    <fragment
+        android:id="@+id/marketFragment"
+        android:name="com.example.perfz.market.MarketFragment"
+        android:label="fragment_market"
+        tools:layout="@layout/fragment_market" />
+
+    <fragment
+        android:id="@+id/wishlistFragment"
+        android:name="com.example.perfz.wishlist.WishlistFragment"
+        android:label="Mi Wishlist"
+        tools:layout="@layout/fragment_wishlist" />
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.perfz.profile.ProfileFragment"
+        android:label="Mi Cuenta"
+        tools:layout="@layout/fragment_profile" />
 
 </navigation>

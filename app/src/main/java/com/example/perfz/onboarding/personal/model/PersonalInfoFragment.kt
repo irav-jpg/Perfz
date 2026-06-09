@@ -12,6 +12,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.example.perfz.R
+import androidx.navigation.fragment.findNavController
 import com.example.perfz.core.FragmentCommunicator
 import com.example.perfz.core.ResponseService
 import com.example.perfz.databinding.FragmentPersonalInfoBinding
@@ -20,13 +22,11 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 import java.util.Calendar
-import com.example.perfz.onboarding.personal.model.PersonalInfoViewModel
 
 class PersonalInfoFragment : Fragment() {
 
     private var _binding: FragmentPersonalInfoBinding? = null
     private val binding get() = _binding!!
-
 
     private val viewModel by viewModels<PersonalInfoViewModel>()
     private lateinit var communicator: FragmentCommunicator
@@ -61,10 +61,10 @@ class PersonalInfoFragment : Fragment() {
         val phone = binding.etCelular.text.toString().trim()
         val birthDate = binding.etFechaNacimiento.text.toString().trim()
 
-
         binding.nombreTil.error = viewModel.validateFirstName(firstName)
         binding.apellidosTil.error = viewModel.validateLastName(lastName)
-        binding.fechaNacimientoTil.error = viewModel.validatePhone(phone)
+        binding.celularTil.error = viewModel.validatePhone(phone) // Corregido el TIL correspondiente
+        binding.fechaNacimientoTil.error = viewModel.validateBirthDate(birthDate) // Corregida validación cruzada
 
         binding.btnContinuar.isEnabled =
             viewModel.isFormValid(firstName, lastName, phone, birthDate)
@@ -89,7 +89,6 @@ class PersonalInfoFragment : Fragment() {
     }
 
     private fun setupClickListeners() {
-
         binding.btnBack.setOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
@@ -121,7 +120,6 @@ class PersonalInfoFragment : Fragment() {
                         }
                         is ResponseService.Success -> {
                             communicator.manageLoader(false)
-                            // Salto a la actividad principal de Perfz
                             val intent = Intent(requireContext(), HomeActivity::class.java)
                             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                             startActivity(intent)

@@ -24,8 +24,12 @@ class AddTransactionViewModel : ViewModel() {
             val transaction = Transaction(amount = amount, category = category, description = desc, type = type)
 
             addTransaction(uid, transaction) { success ->
-                if (success) _state.value = ResponseService.Success("¡Guardado!")
-                else _state.value = ResponseService.Error("Error al guardar")
+                if (success) {
+                    _state.value = ResponseService.Success("¡Guardado!")
+                } else {
+                    _state.value = ResponseService.Error("Error al guardar")
+                }
+                _state.value = null // Resetea el estado para habilitar futuros envíos
             }
         }
     }

@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F6FA">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_menu_revert"
+                app:tint="#1A1A1A"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Mercado Global"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:textColor="#1A1A1A"
+                app:layout_constraintTop_toBottomOf="@+id/btnBack"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardMarketStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp"
+                app:cardBackgroundColor="#E8F5E9"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitle">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+                    <TextView
+                        android:id="@+id/lblStatusTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🟢 Tendencia del Día: Alcista"
+                        android:textColor="#2E7D32"
+                        android:textStyle="bold"
+                        android:textSize="15sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/lblStatusTitle"
+                        android:layout_marginTop="4dp"
+                        android:text="Los mercados globales muestran estabilidad con bajo nivel de volatilidad."
+                        android:textColor="#4CAF50"
+                        android:textSize="12sp"/>
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/tvLabelCurrencies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Monedas Principales (MXN)"
+                android:textSize="14sp"
+                android:textColor="#757575"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:letterSpacing="0.05"
+                app:layout_constraintTop_toBottomOf="@+id/cardMarketStatus"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/layoutCurrencies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/tvLabelCurrencies">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="0dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🇺🇸 USD / MXN" android:textSize="14sp" android:textStyle="bold" android:textColor="#757575"/>
+                        <TextView android:id="@+id/tvUsdPrice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cargando..." android:textSize="20sp" android:textStyle="bold" android:textColor="#000000" android:layout_marginTop="6dp"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="0dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🇪🇺 EUR / MXN" android:textSize="14sp" android:textStyle="bold" android:textColor="#757575"/>
+                        <TextView android:id="@+id/tvEurPrice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cargando..." android:textSize="20sp" android:textStyle="bold" android:textColor="#000000" android:layout_marginTop="6dp"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvLabelMoreCurrencies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Otras Divisas del Mundo"
+                android:textSize="14sp"
+                android:textColor="#757575"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:letterSpacing="0.05"
+                app:layout_constraintTop_toBottomOf="@+id/layoutCurrencies"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/layoutMoreCurrencies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/tvLabelMoreCurrencies">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="0dp">
+                    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp">
+                        <TextView android:id="@+id/lblJpy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🇯🇵 JPY - Yen Japonés" android:textSize="15sp" android:textStyle="bold" android:textColor="#1A1A1A"/>
+                        <TextView android:id="@+id/tvJpyPrice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="---" android:textSize="15sp" android:textStyle="bold" android:textColor="#000000" android:layout_alignParentEnd="true"/>
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="0dp">
+                    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp">
+                        <TextView android:id="@+id/lblKrw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🇰🇷 KRW - Won Surcoreano" android:textSize="15sp" android:textStyle="bold" android:textColor="#1A1A1A"/>
+                        <TextView android:id="@+id/tvKrwPrice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="---" android:textSize="15sp" android:textStyle="bold" android:textColor="#000000" android:layout_alignParentEnd="true"/>
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="0dp">
+                    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp">
+                        <TextView android:id="@+id/lblGbp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🇬🇧 GBP - Libra Esterlina" android:textSize="15sp" android:textStyle="bold" android:textColor="#1A1A1A"/>
+                        <TextView android:id="@+id/tvGbpPrice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="---" android:textSize="15sp" android:textStyle="bold" android:textColor="#000000" android:layout_alignParentEnd="true"/>
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvLabelCrypto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Criptomonedas (MXN)"
+                android:textSize="14sp"
+                android:textColor="#757575"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:letterSpacing="0.05"
+                app:layout_constraintTop_toBottomOf="@+id/layoutMoreCurrencies"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/layoutCrypto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/tvLabelCrypto">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="0dp">
+                    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🪙 BTC - Bitcoin" android:textSize="15sp" android:textStyle="bold" android:textColor="#1A1A1A"/>
+                        <TextView android:id="@+id/tvBtcPrice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cargando..." android:textSize="15sp" android:textStyle="bold" android:textColor="#36BBA7" android:layout_alignParentEnd="true"/>
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="0dp">
+                    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🔷 ETH - Ethereum" android:textSize="15sp" android:textStyle="bold" android:textColor="#1A1A1A"/>
+                        <TextView android:id="@+id/tvEthPrice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cargando..." android:textSize="15sp" android:textStyle="bold" android:textColor="#36BBA7" android:layout_alignParentEnd="true"/>
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvLabelStock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Índices Bursátiles Mundiales"
+                android:textSize="14sp"
+                android:textColor="#757575"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:letterSpacing="0.05"
+                app:layout_constraintTop_toBottomOf="@+id/layoutCrypto"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/layoutStock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/tvLabelStock">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="0dp">
+                    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="20dp">
+                        <TextView android:id="@+id/lblSpy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="S&amp;P 500 Index" android:textSize="16sp" android:textStyle="bold" android:textColor="#1A1A1A"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mercado de EE.UU." android:textSize="12sp" android:textColor="#757575" android:layout_below="@id/lblSpy" android:layout_marginTop="2dp"/>
+                        <TextView android:id="@+id/tvSpyPrice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="---" android:textSize="16sp" android:textStyle="bold" android:textColor="#000000" android:layout_alignParentEnd="true" android:layout_centerVertical="true"/>
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="0dp">
+                    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="20dp">
+                        <TextView android:id="@+id/lblNasdaq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="NASDAQ Composite" android:textSize="16sp" android:textStyle="bold" android:textColor="#1A1A1A"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Empresas Tecnológicas" android:textSize="12sp" android:textColor="#757575" android:layout_below="@id/lblNasdaq" android:layout_marginTop="2dp"/>
+                        <TextView android:id="@+id/tvNasdaqPrice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="---" android:textSize="16sp" android:textStyle="bold" android:textColor="#000000" android:layout_alignParentEnd="true" android:layout_centerVertical="true"/>
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvLabelTips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Estrategia y Sugerencias"
+                android:textSize="14sp"
+                android:textColor="#757575"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:letterSpacing="0.05"
+                app:layout_constraintTop_toBottomOf="@+id/layoutStock"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="24dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp"
+                app:cardBackgroundColor="#FFF9C4"
+                app:layout_constraintTop_toBottomOf="@+id/tvLabelTips"
+                app:layout_constraintBottom_toBottomOf="parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="💡 Recomendación del Sistema"
+                        android:textColor="#F57F17"
+                        android:textStyle="bold"
+                        android:textSize="14sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="El Peso Mexicano se mantiene fuerte. Es un buen momento estratégico para considerar la diversificación de un porcentaje de tu capital disponible en activos estables de renta variable o ETFs vinculados al S&amp;P 500."
+                        android:textColor="#5D4037"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

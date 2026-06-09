@@ -7,14 +7,12 @@
     android:padding="24dp"
     android:background="#F8F9FA">
 
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineAddTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="80dp" />
-
 
     <ImageButton
         android:id="@+id/btnBack"
@@ -28,7 +26,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvTitle" />
 
-
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
@@ -40,7 +37,6 @@
         android:textColor="#1A1A1A"
         app:layout_constraintTop_toTopOf="@id/guidelineAddTop"
         app:layout_constraintStart_toEndOf="@id/btnBack" />
-
 
     <com.google.android.material.button.MaterialButtonToggleGroup
         android:id="@+id/toggleGroupType"
@@ -66,8 +62,15 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Deuda" />
-    </com.google.android.material.button.MaterialButtonToggleGroup>
 
+        <Button
+            android:id="@+id/btnInvestment"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Inversión" />
+    </com.google.android.material.button.MaterialButtonToggleGroup>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilAmount"
@@ -84,7 +87,6 @@
             android:layout_height="wrap_content"
             android:inputType="numberDecimal" />
     </com.google.android.material.textfield.TextInputLayout>
-
 
     <TextView
         android:id="@+id/tvLabelCategory"
@@ -105,7 +107,6 @@
         android:background="@android:drawable/btn_dropdown"
         app:layout_constraintTop_toBottomOf="@+id/tvLabelCategory" />
 
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilDesc"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -121,7 +122,6 @@
             android:layout_height="wrap_content"
             android:inputType="textCapSentences" />
     </com.google.android.material.textfield.TextInputLayout>
-
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSave"

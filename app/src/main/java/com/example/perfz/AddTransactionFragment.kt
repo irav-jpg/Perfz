@@ -33,30 +33,53 @@ class AddTransactionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         binding.btnBack.setOnClickListener {
             findNavController().navigateUp()
         }
 
 
-        val categories = resources.getStringArray(R.array.transaction_categories)
-        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, categories)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.spCategory.adapter = adapter
+        val categoriasDeudas = arrayOf("Comida", "Transporte", "Vivienda", "Entretenimiento", "Otros")
+        val categoriasAbonos = arrayOf("Salario", "Pago", "Transferencia", "Efectivo", "Premio", "Otros")
+        val categoriasInversiones = arrayOf("Inversión", "Bolsa de Valores", "Criptomonedas", "CETES / Renta Fija", "Fondos de Inversión")
+
+
+        fun actualizarSpinnerCategorias(categorias: Array<String>) {
+            val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, categorias)
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            binding.spCategory.adapter = adapter
+        }
+
+
+        when (binding.toggleGroupType.checkedButtonId) {
+            R.id.btnIncome -> actualizarSpinnerCategorias(categoriasAbonos)
+            R.id.btnInvestment -> actualizarSpinnerCategorias(categoriasInversiones)
+            else -> actualizarSpinnerCategorias(categoriasDeudas)
+        }
+
+
+        binding.toggleGroupType.addOnButtonCheckedListener { _, checkedId, isChecked ->
+            if (isChecked) {
+                when (checkedId) {
+                    R.id.btnIncome -> actualizarSpinnerCategorias(categoriasAbonos)
+                    R.id.btnExpense -> actualizarSpinnerCategorias(categoriasDeudas)
+                    R.id.btnInvestment -> actualizarSpinnerCategorias(categoriasInversiones)
+                }
+            }
+        }
 
         binding.btnSave.setOnClickListener {
-            val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return@setOnClickListener
-
-
-            val type = if (binding.toggleGroupType.checkedButtonId == R.id.btnIncome) {
-                "income"
-            } else {
-                "expense"
-            }
-
+            val uid = FirebaseAuth.getInstance().currentUser?.uid ?: "perfz_dev_user"
             val amountStr = binding.etAmount.text.toString()
-            val category = binding.spCategory.selectedItem?.toString() ?: "Otros"
             val description = binding.etDesc.text.toString()
+
+
+            val type = if (binding.toggleGroupType.checkedButtonId == R.id.btnIncome) "income" else "expense"
+
+
+            var category = binding.spCategory.selectedItem?.toString() ?: "Otros"
+            if (binding.toggleGroupType.checkedButtonId == R.id.btnInvestment && !category.startsWith("Inversión")) {
+                category = "Inversión"
+            }
 
             viewModel.save(
                 uid,

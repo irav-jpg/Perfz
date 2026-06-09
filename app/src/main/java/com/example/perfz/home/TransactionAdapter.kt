@@ -8,8 +8,14 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.perfz.core.repositories.Transaction
 import com.example.perfz.databinding.ItemTransactionBinding
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
-class TransactionAdapter : ListAdapter<Transaction, TransactionAdapter.ViewHolder>(DiffCallback) {
+
+class TransactionAdapter(
+    private val onItemClick: (Transaction) -> Unit
+) : ListAdapter<Transaction, TransactionAdapter.ViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemTransactionBinding.inflate(
@@ -21,19 +27,26 @@ class TransactionAdapter : ListAdapter<Transaction, TransactionAdapter.ViewHolde
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
+
+        holder.bind(getItem(position), onItemClick)
     }
 
     class ViewHolder(private val binding: ItemTransactionBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(transaction: Transaction) {
 
+
+        fun bind(transaction: Transaction, onItemClick: (Transaction) -> Unit) {
             binding.tvTransactionName.text = transaction.category
-            binding.tvDate.text = "13 Mayo 2026"
+
+
+            val sdf = SimpleDateFormat("dd MMMM yyyy", Locale("es", "MX"))
+            val fechaFormateada = sdf.format(Date(transaction.date))
+            binding.tvDate.text = fechaFormateada
+
 
 
             if (transaction.type == "expense") {
                 binding.tvAmount.text = String.format("-$%.2f", transaction.amount)
-                binding.tvAmount.setTextColor(Color.parseColor("#E53935")) // Rojo de tu XML
+                binding.tvAmount.setTextColor(Color.parseColor("#E53935"))
             } else {
                 binding.tvAmount.text = String.format("+$%.2f", transaction.amount)
                 binding.tvAmount.setTextColor(Color.parseColor("#26A69A"))
@@ -45,15 +58,31 @@ class TransactionAdapter : ListAdapter<Transaction, TransactionAdapter.ViewHolde
                 "Transporte" -> "🚗"
                 "Vivienda" -> "🏠"
                 "Entretenimiento" -> "🍿"
-                else -> "💰"
+                "Saldo mes anterior" -> "⏳"
+                "Inversión", "Inversiones" -> "📈"
+                "Ahorro Wishlist" -> "✨"
+
+
+                "Salario" -> "💼"
+                "Pago" -> "💵"
+                "Transferencia" -> "📱"
+                "Efectivo" -> "💰"
+                "Premio" -> "🏆"
+
+
+                else -> "💳"
+            }
+
+
+            itemView.setOnClickListener {
+                onItemClick(transaction)
             }
         }
     }
 
     object DiffCallback : DiffUtil.ItemCallback<Transaction>() {
         override fun areItemsTheSame(oldItem: Transaction, newItem: Transaction): Boolean {
-
-            return oldItem.description == newItem.description && oldItem.amount == newItem.amount
+            return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(oldItem: Transaction, newItem: Transaction): Boolean {
